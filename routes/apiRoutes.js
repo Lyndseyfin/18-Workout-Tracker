@@ -47,23 +47,23 @@ router.post("/api/workouts", (req, res) => {
 // });
 
 // adding a exercise
-router.put("/api/workouts/:id", ({body,params}, res) => {
-  workout.findByIdAndUpdate(params.id, {$push:{exercises:body}})
-    .then(data => res.json(data))
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
-
-// router.put('/api/workouts/:id', (req, res) => {
-//   Workout.findOneAndUpdate(req.body, {
-//     where: {
-//       id: req.params.id
-//     },
-//   })
-//     .then(dbWorkout => res.status(200).json(dbWorkout))
-//     .catch(err => res.status(400).json(err))
+// router.put("/api/workouts/:id", ({body,params}, res) => {
+//   workout.findByIdAndUpdate(params.id, {$push:{exercises:body}})
+//     .then(data => res.json(data))
+//     .catch(err => {
+//       res.status(400).json(err);
+//     });
 // });
+
+router.put('/api/workouts/:id', (req, res) => {
+  Workout.findOneAndUpdate(req.body, {
+    where: {
+      id: req.params.id
+    },
+  })
+    .then(dbWorkout => res.status(200).json(dbWorkout))
+    .catch(err => res.status(400).json(err))
+});
 
 
 
