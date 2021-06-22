@@ -13,8 +13,8 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-router.get("/api/workouts/range", (req, res) => {
-  Workout.find({})
+router.get("/api/workouts/range", ({body}, res) => {
+  Workout.find(body)
     .then(dbWorkout => {
         res.json(dbWorkout);
     })
@@ -23,6 +23,7 @@ router.get("/api/workouts/range", (req, res) => {
     });
 });
 
+// creating a workout
 router.post("/api/workouts", (req, res) => {
   console.log(Workout);
 
@@ -37,21 +38,33 @@ router.post("/api/workouts", (req, res) => {
 
 // router.post("/api/workout/bulk", ({ body }, res) => {
 //   Workout.insertMany(body)
-//     .then(dbWorkouts => {
-//       res.json(dbWorkouts);
+//     .then(dbWorkout => {
+//       res.json(dbWorkout);
 //     })
 //     .catch(err => {
 //       res.status(400).json(err);
 //     });
 // });
-router.put("/api/workouts/:id", (req, res)=>{
-  workout.findByIdAndUpdate(
-      req.params.id,
-      {$push : {exercises: req.body}}
-  )
-  .then( results=> res.json(results))
-  .catch(err=> res.json(err))
+
+// adding a exercise
+router.put("/api/workouts/:id", ({body,params}, res) => {
+  workout.findByIdAndUpdate(params.id, {$push:{exercises:body}})
+    .then(data => res.json(data))
+    .catch(err => {
+      res.status(400).json(err);
+    });
 });
+
+// router.put('/api/workouts/:id', (req, res) => {
+//   Workout.findOneAndUpdate(req.body, {
+//     where: {
+//       id: req.params.id
+//     },
+//   })
+//     .then(dbWorkout => res.status(200).json(dbWorkout))
+//     .catch(err => res.status(400).json(err))
+// });
+
 
 
 
