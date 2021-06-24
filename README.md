@@ -25,7 +25,11 @@ Myself
 ## License
 ![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen)
 ## Heroku
-<a href=">Workout Tracker</a>
+<a href="https://safe-ridge-92206.herokuapp.com/exercise?id=60d3d6c2e3040800154206b7">Workout Tracker</a>
+
+## MongoDB Atlas
+<a href=""></a>
+
 ## Screenshot
-![screenshot]())
+![screenshot](images/wt.jpg)
 
